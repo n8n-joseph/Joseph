@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph Lase • IT Support & Video Editor</title>
+
+<!-- Social Media Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --primary:#6366f1;
+  --secondary:#22d3ee;
+  --glass:rgba(255,255,255,0.06);
+  --line:rgba(255,255,255,0.12);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 520px at 18% 8%, rgba(99,102,241,.28), transparent 60%),
+    radial-gradient(760px 420px at 84% 18%, rgba(34,211,238,.20), transparent 58%),
+    linear-gradient(135deg,#020617,#0f172a);
+}
+
+/* layout helpers */
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+.section{
+  padding:82px 0;
+  text-align:center;
+}
+h1,h2,h3{margin:0}
+h2{
+  font-size:36px;
+  letter-spacing:-.5px;
+}
+.lead{
+  max-width:780px;
+  margin:10px auto 0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* NAV */
+nav{
+  position:sticky; top:0; z-index:10;
+  background:rgba(2,6,23,0.65);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav-inner{
+  height:72px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight:900;
+  letter-spacing:.2px;
+}
+.brand-badge{
+  width:36px;height:36px;border-radius:12px;
+  display:grid;place-items:center;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  box-shadow:0 14px 40px rgba(0,0,0,.35);
+  font-weight:900;
+}
+.brand-name{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  color:transparent;
+  font-size:18px;
+}
+.menu a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:700;
+  margin-left:14px;
+  padding:8px 10px;
+  border-radius:12px;
+  transition:.2s;
+  display:inline-block;
+}
+.menu a:hover{color:#fff}
+.menu a.active{
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+}
+
+/* HERO */
+.hero{
+  padding:72px 0 50px;
+}
+.hero-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  background:var(--glass);
+  border:1px solid var(--line);
+  backdrop-filter: blur(18px);
+  box-shadow:0 36px 90px rgba(0,0,0,.45);
+  padding:56px 26px;
+  text-align:center;
+}
+.hero-card::before{
+  content:"";
+  position:absolute; inset:-140px;
+  background:
+    radial-gradient(circle at 28% 30%, rgba(99,102,241,.25), transparent 56%),
+    radial-gradient(circle at 72% 65%, rgba(34,211,238,.18), transparent 56%);
+  filter:blur(30px);
+  z-index:0;
+}
+.hero-card > *{position:relative; z-index:1;}
+
+.profile{
+  width:140px;height:140px;border-radius:50%;
+  overflow:hidden;
+  margin:0 auto 18px;
+  border:4px solid rgba(255,255,255,0.12);
+  box-shadow:0 18px 55px rgba(0,0,0,.38);
+}
+.profile img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.hero-title{
+  font-size:52px;
+  letter-spacing:-1px;
+  margin:0 0 8px;
+}
+.grad{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.type{
+  font-size:22px;
+  color:var(--muted);
+  min-height:28px;
+  margin-bottom:14px;
+}
+
+.hero-desc{
+  max-width:720px;
+  margin:0 auto 18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.badges{
+  display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  margin:16px 0 20px;
+}
+.badge{
+  font-size:13px; font-weight:750;
+  color:#cbd5e1;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.05);
+}
+
+/* buttons */
+.actions{
+  display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+  margin:0 0 18px;
+}
+.btn{
+  padding:14px 22px;
+  border-radius:14px;
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{
+  color:#fff;
+  background:transparent;
+  border:2px solid rgba(255,255,255,0.20);
+}
+.btn-ghost:hover{transform:translateY(-2px); border-color:rgba(255,255,255,0.35)}
+
+/* socials */
+.social{
+  display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+}
+.social a{
+  width:44px;height:44px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:14px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  transition:.25s;
+}
+.social a:hover{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  transform:translateY(-3px);
+}
+
+/* grids */
+.grid-3{
+  margin:28px auto 0;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+}
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:18px;
+  padding:18px;
+  text-align:left;
+  transition:.2s transform, .2s border-color;
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.22);
+}
+.card h3{font-size:16px;margin:0 0 8px}
+.card p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+
+/* Projects */
+.project{
+  padding:14px;
+}
+.project video{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:14px;
+  border:2px solid rgba(255,255,255,0.60);
+}
+.project h3{margin:10px 0 6px; font-size:16px}
+.project p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+
+/* Contact */
+.contact-grid{
+  margin:26px auto 0;
+  max-width:980px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+}
+.contact-item{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:16px;
+  padding:14px;
+  text-align:left;
+}
+.contact-item b{display:block; margin-bottom:6px}
+.contact-item a{color:#e5e7eb; text-decoration:none;}
+.contact-item a:hover{text-decoration:underline;color:#fff}
+
+/* Footer */
+footer{
+  margin-top:10px;
+  padding:26px 0 40px;
+  text-align:center;
+  color:#94a3b8;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .grid-3{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-title{font-size:40px}
+  .menu{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">JL</div>
+        <div class="brand-name">Joseph Lase</div>
+      </div>
+
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-card">
+      <div class="profile">
+        <img src="josep.jpg" alt="Profile">
+      </div>
+
+      <h1 class="hero-title">Hi, I'm <span class="grad">Joseph Lase</span></h1>
+      <div class="type" id="type"></div>
+
+      <p class="hero-desc">
+        I provide reliable, fast, and efficient IT support that keeps systems running smoothly and helps businesses stay productive.
+      </p>
+
+      <div class="badges">
+        <span class="badge">Troubleshooting</span>
+        <span class="badge">Hardware & Software</span>
+        <span class="badge">Network Basics</span>
+        <span class="badge">Video Editor</span>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" onclick="playClick(); document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+          Hire Me
+        </button>
+        <button class="btn btn-ghost" onclick="playClick(); document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+          View Projects
+        </button>
+      </div>
+
+      <!-- Social icons (replace links) -->
+      <div class="social">
+        <a href="https://facebook.com/yourprofile" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://tiktok.com/@yourname" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://linkedin.com/in/yourname" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/yourname" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p class="lead">
+      Passionate IT support specialist and video editor with experience in maintaining systems, solving technical issues, and creating engaging digital content.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2>What I Can Do</h2>
+    <p class="lead">Quick overview of my main services and strengths.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i> IT Troubleshooting</h3>
+        <p>Diagnose and fix PC, printer, and software issues to improve stability and speed.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-desktop"></i> System Setup</h3>
+        <p>Windows installation, drivers, app setup, backups, and basic security checks.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-video"></i> Video Editing</h3>
+        <p>Clean cuts, captions, transitions, audio cleanup, and export for social media.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <p class="lead">Some of my video projects.</p>
+
+    <div class="grid-3">
+      <div class="card project">
+        <video controls>
+          <source src="videos/project1.mp4" type="video/mp4">
+        </video>
+        <h3>Project 1</h3>
+        <p>Short edit / reels / promo sample.</p>
+      </div>
+
+      <div class="card project">
+        <video controls>
+          <source src="videos/project2.mp4" type="video/mp4">
+        </video>
+        <h3>Project 2</h3>
+        <p>Event highlights / vlog edit sample.</p>
+      </div>
+
+      <div class="card project">
+        <video controls>
+          <source src="videos/project4.mp4" type="video/mp4">
+        </video>
+        <h3>Project 3</h3>
+        <p>Cinematic / motion text sample.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p class="lead">Let’s work together. You can reach me through the options below.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <b><i class="fa-solid fa-envelope"></i> Email</b>
+        <a href="mailto:josephlase910@mail.com">josephlase910@mail.com</a>
+      </div>
+
+      <div class="contact-item">
+        <b><i class="fa-solid fa-phone"></i> Phone</b>
+        <a href="tel:+639123456789">+63 912 345 6789</a>
+      </div>
+
+      <div class="contact-item">
+        <b><i class="fa-brands fa-whatsapp"></i> WhatsApp</b>
+        <a href="https://wa.me/639123456789" target="_blank">Chat on WhatsApp</a>
+      </div>
+
+      <div class="contact-item">
+        <b><i class="fa-solid fa-location-dot"></i> Location</b>
+        Cavite, Philippines
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Joseph Lase • IT Support & Video Editor
+</footer>
+
+<!-- Optional click sound (put click.mp3 beside index.html) -->
+<audio id="clickSound" preload="auto">
+  <source src="click.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* typing effect */
+const words = ["IT Support", "Video Editor"];
+let i=0, j=0, isDeleting=false;
+const el = document.getElementById("type");
+
+function type(){
+  const current = words[i];
+  if(!isDeleting){
+    el.textContent = current.substring(0, j++);
+    if(j > current.length){
+      isDeleting = true;
+      setTimeout(type, 1100);
+      return;
+    }
+  }else{
+    el.textContent = current.substring(0, j--);
+    if(j < 0){
+      isDeleting = false;
+      i = (i + 1) % words.length;
+    }
+  }
+  setTimeout(type, isDeleting ? 45 : 80);
+}
+type();
+
+/* active nav highlight */
+const menuLinks = document.querySelectorAll(".menu a");
+const sections = [...menuLinks].map(a => document.querySelector(a.getAttribute("href")));
+
+function setActive(){
+  const y = window.scrollY + 140;
+  let currentId = "#home";
+  sections.forEach(sec => {
+    if(sec && sec.offsetTop <= y) currentId = "#" + sec.id;
+  });
+  menuLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === currentId));
+}
+window.addEventListener("scroll", setActive);
+setActive();
+
+/* click sound (safe even if click.mp3 missing) */
+function playClick(){
+  const a = document.getElementById("clickSound");
+  if(!a) return;
+  a.currentTime = 0;
+  a.play().catch(()=>{});
+}
+</script>
+
+</body>
+</html>
